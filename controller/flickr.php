@@ -6,8 +6,8 @@
  * Time: 6:43 PM
  */
 
-include('./model/flickrapi.php');
-include('./model/flickrimage.php');
+include('../model/flickrapi.php');
+include('../model/flickrimage.php');
 class Controller_Flickr{
 
     public function __construct() {
@@ -21,13 +21,8 @@ class Controller_Flickr{
 
     }
 
-    public function generate_pagination($total_num, $total_page) {
-        return null;
-    }
-
     public function get_images($text, $page_num = null) {
 
-        $text = filter_var($text, FILTER_SANITIZE_STRING);
         $numPerPage = IMAGES_PER_PAGE;
         $result = $this->flickr_api->searchImage($text, $numPerPage, $page_num);
         $images = array();
