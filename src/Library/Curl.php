@@ -6,43 +6,35 @@
  * Time: 5:18 PM
  */
 
+
 class Library_Curl {
     protected $curl_obj;
 
+    /**
+     * general curl initialize, which can extend more curl functions
+     */
     function __construct() {
         // initialise cURL object/options
         $this->curl_obj = curl_init();
     }
-
 
     function __destruct() {
         // free cURL resources/session
         curl_close($this->curl_obj);
     }
 
-
-    public function send_transaction($request_url, $method, $request = null) {
+    /**
+     * @param $request_url
+     * @return mixed|string
+     * curl get
+     */
+    public function get($request_url) {
         // The below sets the HTTP operation type
-        if ($method == "GET") {
-            curl_setopt($this->curl_obj, CURLOPT_HTTPGET, 1);
-        }
-        else if ($method == "POST") {
-            // NOTE: POST operations are currently not supported in this version
-            // [Snippet] howToPost - start
-            curl_setopt($this->curl_obj, CURLOPT_POST, 1);
-            // [Snippet] howToPost - end
-            curl_setopt($this->curl_obj, CURLOPT_POSTFIELDS, $request);
-            // [Snippet] howToSetHeaders - start
-            curl_setopt($this->curl_obj, CURLOPT_HTTPHEADER, array("Content-Length: " . strlen($request)));
-            curl_setopt($this->curl_obj, CURLOPT_HTTPHEADER, array("Content-Type: Application/json;charset=UTF-8"));
-            // [Snippet] howToSetHeaders - end
-        }
 
+        curl_setopt($this->curl_obj, CURLOPT_HTTPGET, 1);
 
-        // [Snippet] howToSetURL - start
         // call the function below to construct the URL for sending the transaction
         curl_setopt($this->curl_obj, CURLOPT_URL, $request_url);
-        // [Snippet] howToSetURL - end
 
         // tells cURL to return the result if successful, of FALSE if the operation failed
         curl_setopt($this->curl_obj, CURLOPT_RETURNTRANSFER, TRUE);
@@ -51,10 +43,8 @@ class Library_Curl {
         curl_setopt($this->curl_obj, CURLOPT_CONNECTTIMEOUT , 10);
         curl_setopt($this->curl_obj, CURLOPT_TIMEOUT, 10); //timeout in seconds
 
-        // [Snippet] executeSendTransaction - start
         // send the transaction
         $response = curl_exec($this->curl_obj);
-        // [Snippet] executeSendTransaction - end
 
 
         // assigns the cURL error to response if something went wrong so the caller can echo the error

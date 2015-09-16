@@ -21,6 +21,9 @@ class Controller_Flickr extends Controller_App{
         $this->model_flickrapi = new Model_FlickrAPI();
     }
 
+    /**
+     * control the image search and display
+     */
     public function action_search() {
         $this->template = "index";
         $data = array();
@@ -35,7 +38,10 @@ class Controller_Flickr extends Controller_App{
                 $current_page = intval($this->request->params['page']);
             }
 
-            list($images, $total_num) = $this->model_flickrapi->search_image($text, self::IMAGES_PER_PAGE, $current_page);
+            $model_flickrapi = new Model_FlickrAPI();
+            $model_flickrapi->search_image($text, self::IMAGES_PER_PAGE, $current_page);
+            $total_num = $this->model_flickrapi->get_images_total_num();
+            $images = $this->model_flickrapi->get_images();
 
             $urlPattern = "?text=".urlencode($this->request->params['text'])."&page=(:num)";
             $pagination = new Library_Pagination($total_num, self::IMAGES_PER_PAGE, $current_page, $urlPattern);

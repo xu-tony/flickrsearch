@@ -6,9 +6,9 @@
  * Time: 6:50 PM
  */
 class Wrapper_Page{
-    private $num = null;
-    private $url = null;
-    private $is_current = false;
+    private $num;
+    private $url;
+    private $is_current;
 
     public function __construct($num, $url, $is_current) {
         $this->num = $num;

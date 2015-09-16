@@ -6,13 +6,28 @@
  * Time: 5:26 PM
  */
 
-class Model_FlickrAPI{
+class Model_FlickrAPI {
 
+    protected $images;
+    protected $images_total_num = null;
+    /**
+     * flickr api, get config class and initialize curl
+     */
     public function __construct() {
         $this->config_flickr = new Config_Flickr();
         $this->library_curl = new Library_Curl();
+
+        $this->images = array();
+        $this->images_total_num = null;
     }
 
+    /**
+     * @param $text
+     * @param $numPerPage
+     * @param $pageSeq
+     * @return array
+     * specific search image function, build query url and parse json.
+     */
     public function search_image($text, $numPerPage, $pageSeq){
         $request_url = $this->config_flickr->get_base_url()."?";
 
@@ -25,9 +40,8 @@ class Model_FlickrAPI{
         $flickr_search_param['per_page'] = $numPerPage;
         $flickr_search_param['page'] = $pageSeq;
         $request_url .= http_build_query($flickr_search_param);
-        $http_method_image_search = $this->config_flickr->get_http_method_image_search();
 
-        $response = $this->library_curl->send_transaction($request_url, $http_method_image_search);
+        $response = $this->library_curl->get($request_url);
 
         $result = json_decode($response, true);
 
@@ -41,7 +55,25 @@ class Model_FlickrAPI{
                 $images[] = Wrapper_Flickrimage::from_array($photo);
             }
         }
+        $this->set_images($images);
+        $this->set_images_total_num($total_num);
 
-        return array($images, $total_num);
+    }
+
+    protected function set_images($images){
+        $this->images = $images;
+    }
+
+    public function get_images(){
+        return $this->images;
+    }
+
+
+    protected function set_images_total_num($images_total_num){
+        $this->images_total_num = $images_total_num;
+    }
+
+    public function get_images_total_num(){
+        return $this->images_total_num;
     }
 }

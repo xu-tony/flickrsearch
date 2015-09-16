@@ -6,15 +6,15 @@
  * Time: 6:50 PM
  */
 class Wrapper_Flickrimage{
-    private $id = null;
-    private $owner = null;
-    private $secret = null;
-    private $server = null;
-    private $farm = null;
-    private $title = null;
-    private $ispublic = null;
-    private $isfriend = null;
-    private $isfamily = null;
+    private $id;
+    private $owner;
+    private $secret;
+    private $server;
+    private $farm;
+    private $title;
+    private $ispublic;
+    private $isfriend;
+    private $isfamily;
 
     public function __construct($id, $owner, $secret, $server, $farm, $title, $ispublic, $isfriend, $isfamily) {
         $this->id = $id;

@@ -18,7 +18,7 @@ class Config_Flickr {
      * default flickr configuration, the variables value can depends on the input param
      */
     public function __construct() {
-        // the specific config detail can depends on the param input in construct
+
         $this->base_url = "https://api.flickr.com/services/rest/";
         $this->flickr_search_method = "flickr.photos.search";
         $this->flickr_search_format = "json";
