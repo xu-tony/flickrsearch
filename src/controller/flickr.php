@@ -6,9 +6,9 @@
  * Time: 6:43 PM
  */
 
-include('../model/flickrapi.php');
-include('../model/flickrimage.php');
-class Controller_Flickr{
+include('./model/flickrapi.php');
+include('./model/flickrimage.php');
+class Controller_Flickr extends Controller_App{
 
     public function __construct() {
         $this->flickr_api = new Model_FlickrAPI();

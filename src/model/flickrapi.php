@@ -5,17 +5,14 @@
  * Date: 9/14/15
  * Time: 5:26 PM
  */
-include('../config/flickrconfig.php');
-include('../connection/connection.php');
+include('./config/flickrconfig.php');
+include('./connection/connection.php');
 
 class Model_FlickrAPI extends Connection{
 
     public function __construct() {
         parent::__construct();
         $this->flickrconfig = new FlickrConfig();
-    }
-
-    public function __destruct() {
     }
 
     public function searchImage($text, $numPerPage, $pageSeq){

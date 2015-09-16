@@ -2,14 +2,6 @@
 
 class Pagination
 {
-    /*
-    Script Name: *Digg Style Paginator Class
-    Script URI: http://www.mis-algoritmos.com/2007/05/27/digg-style-pagination-class/
-    Description: Class in PHP that allows to use a pagination like a digg or sabrosus style.
-    Script Version: 0.4
-    Author: Victor De la Rocha
-    Author URI: http://www.mis-algoritmos.com
-    */
     /*Default values*/
     var $total_pages = -1;//items
     var $limit = null;
@@ -22,9 +14,9 @@ class Pagination
     var $urlF = false;//urlFriendly
 
     /*Buttons next and previous*/
-    var $nextT = "Next";
+    var $next_btn_text = "Next &#187;";
     var $nextI = "&#187;"; //&#9658;
-    var $prevT = "Previous";
+    var $previous_btn_text = "Previous &#171;";
     var $prevI = "&#171;"; //&#9668;
 
     /*****/
@@ -74,17 +66,12 @@ class Pagination
 
     function nextLabel($value)
     {
-        $this->nextT = $value;
-    }
-
-    function nextIcon($value)
-    {
-        $this->nextI = $value;
+        $this->next_btn_text = $value;
     }
 
     function prevLabel($value)
     {
-        $this->prevT = $value;
+        $this->previous_btn_text = $value;
     }
 
     function prevIcon($value)
@@ -118,14 +105,14 @@ class Pagination
     {
         if (!$this->calculate)
             if ($this->calculate())
-                echo "<div class=\"$this->className\">$this->pagination</div>\n";
+                echo "<div id=\"$this->className\">$this->pagination</div>\n";
     }
 
     function getOutput()
     {
         if (!$this->calculate)
             if ($this->calculate())
-                return "<div class=\"$this->className\">$this->pagination</div>\n";
+                return "<div id=\"$this->className\">$this->pagination</div>\n";
     }
 
     function get_pagenum_link($id)
@@ -163,8 +150,8 @@ class Pagination
         }
         if ($error) return false;
 
-        $n = trim($this->nextT . ' ' . $this->nextI);
-        $p = trim($this->prevI . ' ' . $this->prevT);
+        $n = trim($this->next_btn_text . ' ' . $this->nextI);
+        $p = trim($this->prevI . ' ' . $this->previous_btn_text);
 
         /* Setup vars for query. */
         if ($this->page)
@@ -242,6 +229,7 @@ class Pagination
                     $this->pagination .= "<a href=\"" . $this->get_pagenum_link($next) . "\" class=\"next\">$n</a>";
                 else
                     $this->pagination .= "<span class=\"disabled\">$n</span>";
+
                 if ($this->showCounter) $this->pagination .= "<div class=\"pagination_data\">($this->total_pages Pages)</div>";
             }
         }
