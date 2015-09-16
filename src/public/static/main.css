@@ -71,15 +71,12 @@ body
 
 #pagination a {
     padding: 2px 5px 2px 5px;
-    margin: 2px;
     border: 1px solid #AAAADD;
-
     text-decoration: none;
     color: #000099;
 }
 #pagination a:hover, div.digg a:active {
     border: 1px solid #000099;
-
     color: #000;
 }
 #pagination span.current {
@@ -96,5 +93,4 @@ body
     margin: 2px;
     border: 1px solid #EEE;
 
-    color: #DDD;
 }

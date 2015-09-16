@@ -15,6 +15,7 @@ class Model_FlickrAPI{
 
     public function search_image($text, $numPerPage, $pageSeq){
         $request_url = $this->config_flickr->get_base_url()."?";
+
         $flickr_search_param = array();
         $flickr_search_param['method'] = $this->config_flickr->get_flickr_search_method();
         $flickr_search_param['format'] = $this->config_flickr->get_flickr_search_format();

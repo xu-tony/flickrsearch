@@ -17,32 +17,26 @@ class Controller_Flickr extends Controller_App{
 
     public function action_search() {
         $this->template = "index";
+        $data = array();
+
         if (isset($this->request->params['text']) && trim($this->request->params['text'])) {
+
             $text = Helper_Utility::sanitizing($this->request->params['text']);
 
             $current_page = 1;
-            if (isset($this->request->params['page'])) {
-                $page = Helper_Utility::sanitizing($this->request->params['page']);
-                $current_page = $page;
+            if (isset($this->request->params['page']) && is_numeric($this->request->params['page']) && $this->request->params['page']>0) {
+                $current_page = intval($this->request->params['page']);
             }
 
             list($images, $total_num) = $this->model_flickrapi->search_image($text, self::IMAGES_PER_PAGE, $current_page);
 
-            $pagination = new Library_Pagination();
-            $pagination->items($total_num);
-            $pagination->limit(self::IMAGES_PER_PAGE);
-            $pagination->target("?text=".urlencode($_GET['text']));
-            $pagination->currentPage($current_page);
-            $data = array();
+            $urlPattern = "?text=".urlencode($this->request->params['text'])."&page=(:num)";
+
+            $pagination = new Library_Pagination($total_num, self::IMAGES_PER_PAGE, $current_page, $urlPattern);
 
             $data['images'] = $images;
-
             $data['pagination'] = $pagination;
-
-            $this->show($data);
-
         }
-
+        $this->show($data);
     }
-
 }

@@ -67,8 +67,4 @@ class Library_Curl {
         return $response;
     }
 
-
-
-
-
 }
