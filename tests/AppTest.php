@@ -16,11 +16,14 @@ class AppTest extends PHPUnit_Framework_TestCase
         $_SERVER['REQUEST_METHOD'] = 'GET';
         $_SERVER['SERVER_NAME'] = '127.0.0.1';
 
-        $_SERVER['REQUEST_URI'] = '/';
-        $_SERVER['QUERY_STRING'] = 'name=test';
+        $_SERVER['REQUEST_URI'] = 'testclass/testaction';
+        $_SERVER['QUERY_STRING'] = 'name=test123';
         $request = new Request();
         $respsonse = new Response();
         $app->run($request, $respsonse);
         $this->assertEquals($app->get_request(), $request);
+        $this->assertEquals($request->controller, 'Controller_Testclass');
+        $this->assertEquals($request->action, 'testaction');
+        $this->assertEquals($request->params['name'], 'test123');
     }
 }
