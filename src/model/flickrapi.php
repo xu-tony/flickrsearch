@@ -15,9 +15,13 @@ class Model_FlickrAPI extends Connection{
 
     public function searchImage($text, $numPerPage, $pageSeq){
         $request_url = $this->flickrconfig->get_base_url()."?";
+        $flickr_search_param = array();
 
-        $flickr_search_param = $this->flickrconfig->get_flickr_basic_search_params();
-        $flickr_search_param['text'] = urlencode($text);
+        $flickr_search_param['method'] = $this->flickrconfig->get_flickr_search_method();
+        $flickr_search_param['format'] = $this->flickrconfig->get_flickr_search_format();
+        $flickr_search_param['api_key'] = $this->flickrconfig->get_flickr_api_key();
+        $flickr_search_param['nojsoncallback'] = $this->flickrconfig->get_flickr_nojsoncallback();
+        $flickr_search_param['text'] = $text;
         $flickr_search_param['per_page'] = $numPerPage;
         $flickr_search_param['page'] = $pageSeq;
 

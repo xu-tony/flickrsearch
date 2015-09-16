@@ -28,6 +28,79 @@ class FlickrImage{
         $this->isfamily = $isfamily;
     }
 
+    /**
+     * @return null
+     */
+    public function get_id()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return null
+     */
+    public function get_owner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * @return null
+     */
+    public function get_secret()
+    {
+        return $this->secret;
+    }
+
+    /**
+     * @return null
+     */
+    public function get_server()
+    {
+        return $this->server;
+    }
+
+    /**
+     * @return null
+     */
+    public function get_farm()
+    {
+        return $this->farm;
+    }
+
+    /**
+     * @return null
+     */
+    public function get_title()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return null
+     */
+    public function get_ispublic()
+    {
+        return $this->ispublic;
+    }
+
+    /**
+     * @return null
+     */
+    public function get_isfriend()
+    {
+        return $this->isfriend;
+    }
+
+    /**
+     * @return null
+     */
+    public function get_isfamily()
+    {
+        return $this->isfamily;
+    }
+
+
 
     public static function from_array(array $raw_array) {
         return new FlickrImage(
