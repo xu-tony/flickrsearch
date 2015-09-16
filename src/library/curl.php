@@ -6,7 +6,7 @@
  * Time: 5:18 PM
  */
 
-class Connection {
+class Library_Curl {
     protected $curl_obj;
 
     function __construct() {

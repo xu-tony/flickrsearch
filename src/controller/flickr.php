@@ -24,7 +24,7 @@ class Controller_Flickr extends Controller_App{
             $total_page = $result['photos']['pages'];
             $total_num = $result['photos']['total'];
             foreach($result['photos']['photo'] as $photo){
-                $images[] = FlickrImage::from_array($photo);
+                $images[] = Wrapper_Flickrimage::from_array($photo);
             }
         }
 

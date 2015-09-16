@@ -5,7 +5,7 @@
  * Date: 9/14/15
  * Time: 5:04 PM
  */
-class FlickrConfig {
+class Config_Flickr {
 
     private $base_url = null;
     private $flickr_search_method = null;

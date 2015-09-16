@@ -12,5 +12,4 @@ spl_autoload_register(function ($className) {
     }
 });
 
-$config = parse_ini_file(APP . DS . 'config' . DS . 'app.ini');
-App::Instance()->run($config, new Request(), new Response());
+App::Instance()->run(new Request(), new Response());

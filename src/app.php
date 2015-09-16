@@ -2,8 +2,6 @@
 
 final class App
 {
-    public $config;
-
     /**
      * Singleton method to get the instance
      *
@@ -30,8 +28,7 @@ final class App
      * @param Request $request
      * @param Response $response
      */
-    public function run(array $config, Request $request, Response $response) {
-        $this->config = $config;
+    public function run(Request $request, Response $response) {
 
         if (method_exists($request->controller, $request->action)) {
             $controllerName = $request->controller;

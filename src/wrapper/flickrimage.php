@@ -5,7 +5,7 @@
  * Date: 9/14/15
  * Time: 6:50 PM
  */
-class FlickrImage{
+class Wrapper_Flickrimage{
     private $id = null;
     private $owner = null;
     private $secret = null;
@@ -103,7 +103,7 @@ class FlickrImage{
 
 
     public static function from_array(array $raw_array) {
-        return new FlickrImage(
+        return new Wrapper_Flickrimage(
             array_key_exists("id", $raw_array)?$raw_array['id'] : null,
             array_key_exists("owner", $raw_array)?$raw_array['owner']: null,
             array_key_exists("secret", $raw_array)?$raw_array['secret']: null,
