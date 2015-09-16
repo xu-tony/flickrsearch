@@ -13,7 +13,7 @@ class Response
      * @param bool|true $include_globals
      * @return string
      */
-    public function applyTemplate($template = 'index', $vars = array(), $include_globals = true)
+    public function apply_template($template = 'index', $vars = array(), $include_globals = true)
     {
         header($this->header);
 

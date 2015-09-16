@@ -25,6 +25,6 @@ abstract class Controller_App
      */
     public function show($vars = array())
     {
-        echo $this->response->applyTemplate($this->template, $vars, true);
+        echo $this->response->apply_template($this->template, $vars, true);
     }
 }
