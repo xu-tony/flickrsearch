@@ -1,7 +1,4 @@
 <?php
-//include_once __DIR__ . '/../src/App.php';
-//include_once __DIR__ . '/../src/Request.php';
-//include_once __DIR__ . '/../src/Response.php';
 
 class AppTest extends PHPUnit_Framework_TestCase
 {
