@@ -5,8 +5,8 @@ class Request
     public $method;
     public $get;
     public $post;
-    public $serverName;
-    public $requestUri;
+    public $server_name;
+    public $request_uri;
     public $params = array();
     public $controller = 'index';
     public $action = 'index';
@@ -23,11 +23,11 @@ class Request
             $this->post = $_POST;
         }
         $this->method = $_SERVER['REQUEST_METHOD'];
-        $this->serverName = $_SERVER['SERVER_NAME'];
-        $uriParts = explode('?', $_SERVER['REQUEST_URI'], 2);
-        $this->requestUri = array_shift($uriParts);
+        $this->server_name = $_SERVER['SERVER_NAME'];
+        $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+        $this->request_uri = array_shift($uri_parts);
         parse_str($_SERVER['QUERY_STRING'], $this->params);
-        list($this->controller, $this->action) = $this->route($this->requestUri);
+        list($this->controller, $this->action) = $this->route($this->request_uri);
     }
 
     /**
@@ -44,30 +44,30 @@ class Request
     /**
      * Generate the name of controller and action
      *
-     * @param $requestUri
+     * @param $request_uri
      * @return array - array(0 => 'Controller_Name', 1 => 'actionName')
      */
-    public function route($requestUri)
+    public function route($request_uri)
     {
-        $controllerName = 'Controller_Index';
-        $actionName = 'action_index';
-        $requestUri = strtolower($requestUri);
-        if (!empty($requestUri) && $requestUri !== '/') {
-            $requestUri = substr($requestUri, 1);
+        $controller_name = 'Controller_Index';
+        $action_name = 'action_index';
+        $request_uri = strtolower($request_uri);
+        if (!empty($request_uri) && $request_uri !== '/') {
+            $request_uri = substr($request_uri, 1);
 
-            $urlParts = explode('/', $requestUri);
-            switch (count($urlParts)) {
+            $url_parts = explode('/', $request_uri);
+            switch (count($url_parts)) {
                 case 2:
-                    $controllerName = 'Controller_' . ucfirst($urlParts[0]);
-                    $actionName = 'action_' . lcfirst($urlParts[1]);
+                    $controller_name = 'Controller_' . ucfirst($url_parts[0]);
+                    $action_name = 'action_' . lcfirst($url_parts[1]);
                     break;
 
                 case 1:
-                    $actionName = 'action_' . lcfirst($urlParts[0]);
+                    $action_name = 'action_' . lcfirst($url_parts[0]);
                     break;
             }
         }
-        $result = array($controllerName, $actionName);
+        $result = array($controller_name, $action_name);
         return $result;
     }
 }

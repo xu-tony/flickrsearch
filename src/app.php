@@ -40,7 +40,7 @@ final class App
             $controller->$actionName();
         } else {
             $controller = new Controller_Error($request, $response);
-            $controller->actionError404();
+            $controller->action_error404();
         }
     }
 }
