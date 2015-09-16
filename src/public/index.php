@@ -1,4 +1,5 @@
 <?php
+error_reporting(-1);
 define('DS', DIRECTORY_SEPARATOR);
 define('APP', realpath(__DIR__ . DS . '..'));
 

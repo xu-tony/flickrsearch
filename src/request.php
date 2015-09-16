@@ -24,7 +24,8 @@ class Request
         }
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->serverName = $_SERVER['SERVER_NAME'];
-        $this->requestUri = array_shift(explode('?', $_SERVER['REQUEST_URI'], 2));
+        $uriParts = explode('?', $_SERVER['REQUEST_URI'], 2);
+        $this->requestUri = array_shift($uriParts);
         parse_str($_SERVER['QUERY_STRING'], $this->params);
         list($this->controller, $this->action) = $this->route($this->requestUri);
     }
