@@ -33,6 +33,19 @@ class Model_FlickrAPI{
 
         $result = json_decode($response, true);
 
-        return $result;
+
+        $images = array();
+        $total_num = null;
+        $total_page = null;
+        if (isset($result['stat']) && $result['stat']=='ok') {
+            $total_page = $result['photos']['pages'];
+            $total_num = $result['photos']['total'];
+            foreach($result['photos']['photo'] as $photo){
+                $images[] = Wrapper_Flickrimage::from_array($photo);
+            }
+        }
+
+
+        return $images;
     }
 }
