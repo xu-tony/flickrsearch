@@ -7,23 +7,21 @@
  */
 class Config_Flickr {
 
-    private $base_url = null;
-    private $flickr_search_method = null;
-    private $flickr_search_format = null;
-    private $flickr_api_key = null;
-    private $flickr_nojsoncallback = null;
-    private $http_method_image_search = null;
+    private $base_url;
+    private $flickr_search_method;
+    private $flickr_search_format;
+    private $flickr_api_key;
+    private $flickr_nojsoncallback;
+    private $http_method_image_search;
 
     // we can pass different env to retrieve the different config
     public function __construct() {
-
+        // the specific config detail can depends on the param input in construct
         $this->base_url = "https://api.flickr.com/services/rest/";
-
         $this->flickr_search_method = "flickr.photos.search";
         $this->flickr_search_format = "json";
         $this->flickr_api_key = "e47dfff26e61503c2535cb032ae9def8";
         $this->flickr_nojsoncallback = "1";
-
         $this->http_method_image_search = 'GET';
     }
 

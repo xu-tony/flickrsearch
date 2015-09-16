@@ -1,6 +1,6 @@
 <?php
 
-class Pagination
+class Library_Pagination
 {
     /*Default values*/
     var $total_pages = -1;//items
