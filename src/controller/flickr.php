@@ -35,12 +35,10 @@ class Controller_Flickr extends Controller_App{
     public function action_search() {
         $this->template = "index";
 
-
-        if ($this->request->params && isset($this->request->params['text']) && trim($this->request->params['text'])) {
-
+        if (isset($this->request->params['text']) && trim($this->request->params['text'])) {
 
             $current_page = 1;
-            if ($this->request->params && isset($this->request->params['page']) && $this->request->params['page'] > 0) {
+            if (isset($this->request->params['page']) && $this->request->params['page'] > 0) {
                 $current_page = $this->request->params['page'];
             }
 
@@ -55,6 +53,9 @@ class Controller_Flickr extends Controller_App{
             //$pagination->target("?text=".urlencode($_GET['text']));
             //$pagination->currentPage($current_page);
             $data = array();
+
+            $data['images'] = $images;
+
             $data['images'] = $images;
 
             //$data['pagination'] = $pagination;
