@@ -38,8 +38,7 @@ class Controller_Flickr extends Controller_App{
                 $current_page = intval($this->request->params['page']);
             }
 
-            $model_flickrapi = new Model_FlickrAPI();
-            $model_flickrapi->search_image($text, self::IMAGES_PER_PAGE, $current_page);
+            $this->model_flickrapi->search_image($text, self::IMAGES_PER_PAGE, $current_page);
             $total_num = $this->model_flickrapi->get_images_total_num();
             $images = $this->model_flickrapi->get_images();
 
