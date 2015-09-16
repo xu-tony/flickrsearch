@@ -31,17 +31,6 @@ class Request
     }
 
     /**
-     * Modification of properties of Request object is disallowed
-     *
-     * @param $name
-     * @param $value
-     * @throws Exception
-     */
-    public function __set($name, $value){
-        throw new Exception('Properties is read only!');
-    }
-
-    /**
      * Generate the name of controller and action
      *
      * @param $request_uri

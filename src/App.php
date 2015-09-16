@@ -24,9 +24,9 @@ final class App
     /**
      * Start the routing
      *
-     * @param array $config
      * @param Request $request
      * @param Response $response
+     * @return Controller_App
      */
     public function run(Request $request, Response $response) {
 
@@ -39,5 +39,6 @@ final class App
             $controller = new Controller_Error($request, $response);
             $controller->action_error404();
         }
+        return $controller;
     }
 }
