@@ -19,6 +19,30 @@ abstract class Controller_App
     }
 
     /**
+     * @return Request
+     */
+    public function get_request()
+    {
+        return $this->request;
+    }
+
+    /**
+     * @return Response
+     */
+    public function get_response()
+    {
+        return $this->response;
+    }
+
+    /**
+     * @return string
+     */
+    public function get_template()
+    {
+        return $this->template;
+    }
+
+    /**
      * Display pages
      *
      * @param array $vars

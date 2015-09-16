@@ -23,7 +23,7 @@ class Response
 
         ob_start();
 
-        require APP . DS . 'views' . DS . $template . '.php';
+        require APP . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $template . '.php';
 
         $applied_template = ob_get_contents();
         ob_end_clean();
