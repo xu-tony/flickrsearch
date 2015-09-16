@@ -50,18 +50,20 @@ class Request
     public function route($requestUri)
     {
         $controllerName = 'Controller_Index';
-        $actionName = 'actionIndex';
+        $actionName = 'action_index';
         $requestUri = strtolower($requestUri);
         if (!empty($requestUri) && $requestUri !== '/') {
+            $requestUri = substr($requestUri, 1);
+
             $urlParts = explode('/', $requestUri);
             switch (count($urlParts)) {
                 case 2:
                     $controllerName = 'Controller_' . ucfirst($urlParts[0]);
-                    $actionName = 'action' . $urlParts[1];
+                    $actionName = 'action_' . lcfirst($urlParts[1]);
                     break;
 
                 case 1:
-                    $actionName = 'action' . $urlParts[0];
+                    $actionName = 'action_' . lcfirst($urlParts[0]);
                     break;
             }
         }

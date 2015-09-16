@@ -2,10 +2,16 @@
 
 class Controller_Index extends Controller_App
 {
-    public function actionIndex()
+
+
+
+    public function action_index()
     {
+
         $data = array();
-        $data['name'] = 'Test';
+        //$data['name'] = 'Test';
         $this->show($data);
+
     }
+
 }
