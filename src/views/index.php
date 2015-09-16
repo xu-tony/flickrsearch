@@ -27,25 +27,25 @@
         </div>
         <?php endif;?>
 
-        <?php if (isset($pagination) && $pagination->getNumPages() > 1):?>
+        <?php if (isset($pagination) && $pagination->get_num_pages() > 1):?>
             <div id="pagination">
-                    <?php if ($pagination->getPrevUrl()): ?>
-                        <span><a href="<?php echo $pagination->getPrevUrl(); ?>">&laquo; Previous</a></span>
+                    <?php if ($pagination->get_prev_url()): ?>
+                        <span><a href="<?php echo $pagination->get_prev_url(); ?>">&laquo; Previous</a></span>
                     <?php endif; ?>
 
-                    <?php foreach ($pagination->getPages() as $page): ?>
-                        <?php if ($page['url']): ?>
-                            <span <?php echo $page['isCurrent'] ? 'class="current"' : ''; ?>>
-                                <a <?php echo $page['isCurrent'] ? 'class="active"' : ''; ?>
-                                    href="<?php echo $page['url']; ?>"><?php echo $page['num']; ?></a>
+                    <?php foreach ($pagination->get_pages() as $page): ?>
+                        <?php if ($page->get_url()): ?>
+                            <span <?php echo $page->is_current() ? 'class="current"' : ''; ?>>
+                                <a <?php echo $page->is_current() ? 'class="active"' : ''; ?>
+                                    href="<?php echo $page->get_url(); ?>"><?php echo $page->get_num(); ?></a>
                             </span>
                         <?php else: ?>
-                            <span class="disabled"><span><?php echo $page['num']; ?></span></span>
+                            <span class="disabled"><span><?php echo $page->get_num(); ?></span></span>
                         <?php endif; ?>
                     <?php endforeach; ?>
 
-                    <?php if ($pagination->getNextUrl()): ?>
-                        <span><a href="<?php echo $pagination->getNextUrl(); ?>">Next &raquo;</a></span>
+                    <?php if ($pagination->get_next_url()): ?>
+                        <span><a href="<?php echo $pagination->get_next_url(); ?>">Next &raquo;</a></span>
                     <?php endif; ?>
             </div>
         <?php endif;?>

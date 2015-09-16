@@ -14,7 +14,9 @@ class Config_Flickr {
     private $flickr_nojsoncallback;
     private $http_method_image_search;
 
-    // we can pass different env to retrieve the different config
+    /**
+     * default flickr configuration, the variables value can depends on the input param
+     */
     public function __construct() {
         // the specific config detail can depends on the param input in construct
         $this->base_url = "https://api.flickr.com/services/rest/";

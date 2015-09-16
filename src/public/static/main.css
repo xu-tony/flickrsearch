@@ -75,17 +75,15 @@ body
     text-decoration: none;
     color: #000099;
 }
-#pagination a:hover, div.digg a:active {
+#pagination a:hover, div.digg a:active, #pagination span.current a{
     border: 1px solid #000099;
     color: #000;
+    background-color: #AAAADD;
 }
 #pagination span.current {
     padding: 2px 5px 2px 5px;
     margin: 2px;
-    border: 1px solid #000099;
-
     font-weight: bold;
-    background-color: #000099;
     color: #FFF;
 }
 #pagination span.disabled {

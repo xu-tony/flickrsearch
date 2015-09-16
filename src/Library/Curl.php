@@ -21,7 +21,6 @@ class Library_Curl {
     }
 
 
-    // Send transaction to payment server
     public function send_transaction($request_url, $method, $request = null) {
         // The below sets the HTTP operation type
         if ($method == "GET") {
