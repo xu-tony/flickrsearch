@@ -1,11 +1,7 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: tony
- * Date: 9/14/15
- * Time: 6:50 PM
- */
-class Wrapper_Flickrimage{
+namespace MyApp\Wrapper;
+
+class Flickrimage{
     private $id;
     private $owner;
     private $secret;
@@ -103,7 +99,7 @@ class Wrapper_Flickrimage{
 
 
     public static function from_array(array $raw_array) {
-        return new Wrapper_Flickrimage(
+        return new Flickrimage(
             array_key_exists("id", $raw_array)?$raw_array['id'] : null,
             array_key_exists("owner", $raw_array)?$raw_array['owner']: null,
             array_key_exists("secret", $raw_array)?$raw_array['secret']: null,

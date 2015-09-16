@@ -1,6 +1,7 @@
 <?php
+namespace MyApp\Controller;
 
-class Controller_Index extends Controller_App
+class Index extends App
 {
     /**
      * this is the default controller default action

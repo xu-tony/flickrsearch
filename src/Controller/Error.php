@@ -1,6 +1,7 @@
 <?php
+namespace MyApp\Controller;
 
-class Controller_Error extends Controller_App
+class Error extends App
 {
     public function action_error404()
     {

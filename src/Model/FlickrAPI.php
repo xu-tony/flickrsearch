@@ -1,12 +1,11 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: tony
- * Date: 9/14/15
- * Time: 5:26 PM
- */
+namespace MyApp\Model;
 
-class Model_FlickrAPI {
+use MyApp\Config;
+use MyApp\Library;
+use MyApp\Wrapper;
+
+class FlickrAPI {
 
     protected $images;
     protected $images_total_num = null;
@@ -14,8 +13,8 @@ class Model_FlickrAPI {
      * flickr api, get config class and initialize curl
      */
     public function __construct() {
-        $this->config_flickr = new Config_Flickr();
-        $this->library_curl = new Library_Curl();
+        $this->config_flickr = new Config\Flickr();
+        $this->library_curl = new Library\Curl();
 
         $this->images = array();
         $this->images_total_num = null;
@@ -52,7 +51,7 @@ class Model_FlickrAPI {
             $total_page = $result['photos']['pages'];
             $total_num = $result['photos']['total'];
             foreach($result['photos']['photo'] as $photo){
-                $images[] = Wrapper_Flickrimage::from_array($photo);
+                $images[] = Wrapper\Flickrimage::from_array($photo);
             }
         }
         $this->set_images($images);

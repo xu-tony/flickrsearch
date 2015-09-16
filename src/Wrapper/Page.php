@@ -1,11 +1,7 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: tony
- * Date: 9/15/15
- * Time: 6:50 PM
- */
-class Wrapper_Page{
+namespace MyApp\Wrapper;
+
+class Page{
     private $num;
     private $url;
     private $is_current;

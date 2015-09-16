@@ -1,11 +1,9 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: tony
- * Date: 9/15/15
- * Time: 6:31 PM
- */
-class Library_Pagination
+namespace MyApp\Library;
+
+use MyApp\Wrapper;
+
+class Pagination
 {
     const NUM_PLACEHOLDER = '(:num)';
 
@@ -164,7 +162,7 @@ class Library_Pagination
      */
     protected function create_page($page_num, $is_current = false)
     {
-        return new Wrapper_Page($page_num,$this->get_page_url($page_num),$is_current);
+        return new Wrapper\Page($page_num,$this->get_page_url($page_num),$is_current);
     }
 
     /**
@@ -172,6 +170,6 @@ class Library_Pagination
      */
     protected function create_page_ellipsis()
     {
-        return new Wrapper_Page('...',null,false);
+        return new Wrapper\Page('...',null,false);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+namespace MyApp\Http;
 
 class Response
 {
@@ -15,7 +16,7 @@ class Response
      */
     public function apply_template($template = 'index', $vars = array(), $include_globals = true)
     {
-        header($this->header);
+//        header($this->header);
 
         extract($vars);
 
@@ -23,7 +24,7 @@ class Response
 
         ob_start();
 
-        require APP . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $template . '.php';
+        require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $template . '.php';
 
         $applied_template = ob_get_contents();
         ob_end_clean();
