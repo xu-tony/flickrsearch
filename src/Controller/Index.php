@@ -10,6 +10,6 @@ class Index extends App
      */
     public function action_index()
     {
-        echo $this->show(new View('index'));
+        return $this->show(new View('index'));
     }
 }

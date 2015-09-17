@@ -48,6 +48,6 @@ class Flickr extends App{
         }
         $view = new View('index');
         $view->set_data($data);
-        echo $this->show($view);
+        return $this->show($view);
     }
 }

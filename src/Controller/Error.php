@@ -11,6 +11,6 @@ class Error extends App
         $this->response->add_header("HTTP/1.0 404 Not Found");
         $view = new View('error');
         $view->set_var('error', '404 Page Not Found');
-        echo $this->show($view);
+        return $this->show($view);
     }
 }
