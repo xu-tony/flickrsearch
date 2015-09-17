@@ -37,8 +37,7 @@ class Flickr extends App{
                 $current_page = intval($this->request->params['page']);
             }
 
-            $images = $this->model_flickrapi->search_image($text, self::IMAGES_PER_PAGE, $current_page);
-            $total_num = count($images);
+            list($images, $total_num) = $this->model_flickrapi->search_image($text, self::IMAGES_PER_PAGE, $current_page);
 
             $urlPattern = "?text=".urlencode($this->request->params['text'])."&page=(:num)";
             $pagination = new Library\Pagination($total_num, self::IMAGES_PER_PAGE, $current_page, $urlPattern);
@@ -48,7 +47,7 @@ class Flickr extends App{
 
             $pagination_view = new View('pagination');
             $pagination_view->set_data(array("pagination"=>$pagination));
-
+            $page= $pagination->get_next_page();
             $data['search_result_view'] = $this->show($result_view);
             $data['pagination_view'] =  $this->show($pagination_view);
         }

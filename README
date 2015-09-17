@@ -2,15 +2,13 @@ This is a small PHP mvc framework.
 
 The server root should point to the path ../flickrsearch/src/public/ , that index.php is the entry point.
 
-To run phpunit just run phpunit under folder tests.
+To run phpunit just run phpunit under flickrsearch folder.
 
-
+The views are easy to be separated and controlled.
 
 
 TODO:
 1. I need to implement a cache storage(memcache, or redis) for the same search request result for 2-5 mins
-
-2. Unittest is hard to finish.
 
 
 

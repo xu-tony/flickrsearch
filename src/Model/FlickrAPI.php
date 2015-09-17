@@ -51,11 +51,13 @@ class FlickrAPI extends App
         $result = json_decode($response, true);
 
         $images = array();
+        $total_num = null;
         if (isset($result['stat']) && $result['stat']=='ok') {
+            $total_num = $result['photos']['total'];
             foreach($result['photos']['photo'] as $photo) {
                 $images[] = Wrapper\Flickrimage::from_array($photo);
             }
         }
-        return $images;
+        return array($images, $total_num);
     }
 }
