@@ -11,13 +11,13 @@ class Flickr extends App{
     const IMAGES_PER_PAGE = 5;
 
     /**
-     * @param Http\Request $request
-     *
-     * this is the flickr controller control the data retrieving and view display
+     * @param $text
+     * @param $current_page
+     * @return array
      */
-    public function __construct(Http\Request $request) {
-        parent::__construct($request);
-        $this->model_flickrapi = new Model\FlickrAPI();
+    public function search_image($text, $current_page) {
+        $model_flickrapi = new Model\FlickrAPI();
+        return $model_flickrapi->search_image($text, self::IMAGES_PER_PAGE, $current_page);
     }
 
     /**
@@ -37,7 +37,7 @@ class Flickr extends App{
                 $current_page = intval($this->request->params['page']);
             }
 
-            list($images, $total_num) = $this->model_flickrapi->search_image($text, self::IMAGES_PER_PAGE, $current_page);
+            list($images, $total_num) = $this->search_image($text, $current_page);
 
             $urlPattern = "?text=".urlencode($this->request->params['text'])."&page=(:num)";
             $pagination = new Library\Pagination($total_num, self::IMAGES_PER_PAGE, $current_page, $urlPattern);
