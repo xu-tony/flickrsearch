@@ -4,17 +4,17 @@ namespace FlickrSearch;
 class View
 {
     protected static $view_dir;
-    protected $template;
+    protected $template = '';
     protected $data = array();
 
     /**
      * Constructor of class
      *
-     * @param null $template
+     * @param string $template
      */
-    public function __construct($template = null)
+    public function __construct($template = '')
     {
-        $this->template = $template;
+        $this->template = strval($template);
     }
 
     /**
@@ -47,6 +47,22 @@ class View
     public function get_view_dir()
     {
         return self::$view_dir;
+    }
+
+    /**
+     * @param $template
+     */
+    public function set_template($template)
+    {
+        $this->template = strval($template);
+    }
+
+    /**
+     * @return string
+     */
+    public function get_template()
+    {
+        return $this->template;
     }
 
     /**

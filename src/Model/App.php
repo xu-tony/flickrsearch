@@ -1,7 +1,7 @@
 <?php
 namespace FlickrSearch\Model;
 
-abstract class AppModel
+abstract class App
 {
 
 }

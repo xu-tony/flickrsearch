@@ -4,7 +4,6 @@ namespace FlickrSearch\Tests\Model;
 use FlickrSearch\Model;
 use FlickrSearch\Wrapper;
 
-
 class CurlTest extends \PHPUnit_Framework_TestCase
 {
     /** @var Model\FlickrAPI $flickrapi */
@@ -26,7 +25,7 @@ class CurlTest extends \PHPUnit_Framework_TestCase
 
         $this->flickrapi->search_image($text, $numPerPage, $pageSeq);
 
-        $result_json = $this->get_test_data_json();
+        $result_json = json_decode($this->get_test_data_json(), 1);
         $expected_images = array();
         $expected_total_images_number = $result_json['photos']['total'];
         foreach ($result_json['photos']['photo'] as $photo) {

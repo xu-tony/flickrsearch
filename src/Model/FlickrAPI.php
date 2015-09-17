@@ -5,7 +5,7 @@ use FlickrSearch\Config;
 use FlickrSearch\Library;
 use FlickrSearch\Wrapper;
 
-class FlickrAPI extends AppModel
+class FlickrAPI extends App
 {
 
     protected $images;

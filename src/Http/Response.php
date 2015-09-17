@@ -37,12 +37,15 @@ class Response
 
     /**
      * Send out all headers
+     *
+     * @return bool
      */
     public function send_headers()
     {
         foreach ($this->get_header() as $header) {
             header($header);
         }
+        return true;
     }
 
     /**
