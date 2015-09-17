@@ -25,6 +25,7 @@ class Flickr extends App{
      */
     public function action_search() {
         $data = array();
+        $view = new View('index');
 
         if (isset($this->request->params['text']) && trim($this->request->params['text'])) {
             // sanitizing
@@ -43,10 +44,15 @@ class Flickr extends App{
             $urlPattern = "?text=".urlencode($this->request->params['text'])."&page=(:num)";
             $pagination = new Library\Pagination($total_num, self::IMAGES_PER_PAGE, $current_page, $urlPattern);
 
-            $data['images'] = $images;
-            $data['pagination'] = $pagination;
+            $result_view = new View('searchresult');
+            $result_view->set_data(array("images"=>$images));
+
+            $pagination_view = new View('pagination');
+            $pagination_view->set_data(array("pagination"=>$pagination));
+
+            $data['search_result_view'] = $this->show($result_view);
+            $data['pagination_view'] =  $this->show($pagination_view);
         }
-        $view = new View('index');
         $view->set_data($data);
         echo $this->show($view);
     }

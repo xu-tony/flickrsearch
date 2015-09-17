@@ -37,7 +37,7 @@ class PaginationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('?text=bmw&page=4', $this->pagination->get_prev_url());
     }
     /**
-     * @dataProvider getTestData
+     * @dataProvider get_test_data
      */
     public function test_get_pages($numPages, $currentPage, $expected)
     {
