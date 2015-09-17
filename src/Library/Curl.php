@@ -26,7 +26,7 @@ class Library_Curl {
     /**
      * @param $request_url
      * @return mixed|string
-     * curl get
+     * basic curl get action, adding the required curl params
      */
     public function get($request_url) {
         // The below sets the HTTP operation type

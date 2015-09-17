@@ -26,7 +26,8 @@ class Model_FlickrAPI {
      * @param $numPerPage
      * @param $pageSeq
      * @return array
-     * specific search image function, build query url and parse json.
+     *
+     * specific search image function, build query url and parse json result.
      */
     public function search_image($text, $numPerPage, $pageSeq){
         $request_url = $this->config_flickr->get_base_url()."?";
@@ -67,7 +68,6 @@ class Model_FlickrAPI {
     public function get_images(){
         return $this->images;
     }
-
 
     protected function set_images_total_num($images_total_num){
         $this->images_total_num = $images_total_num;
