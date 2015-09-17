@@ -10,16 +10,19 @@ class CurlTest extends \PHPUnit_Framework_TestCase
     protected $valid_request_url = "www.google.com";
     protected $invalid_request_url = "gdfas";
 
-    public function setUp()
-    {
-        $this->curl = new Library\Curl();
-    }
 
     public function test_get()
     {
-        $response = $this->curl->get($this->valid_request_url);
+        $curl = $this->getMockBuilder('FlickrSearch\Library\Curl')
+            ->setMethods(array('curl_exec'))
+            ->getMock();
 
-        echo $response;
+        $curl->expects($this->once())
+            ->method('curl_exec')
+            ->willReturn("200 ok");
+
+        $response = $curl->get($this->valid_request_url);
+        $this->assertEquals("200 ok", $response);
     }
 
 
