@@ -29,17 +29,16 @@ final class App
      * Start the routing
      *
      * @param Http\Request $request
-     * @param Http\Response $response
      * @return Controller\App
      */
-    public function run(Http\Request $request, Http\Response $response) {
+    public function run(Http\Request $request) {
         if (method_exists($request->controller, $request->action)) {
             $controllerName = $request->controller;
             $actionName = $request->action;
-            $controller = new $controllerName($request, $response);
+            $controller = new $controllerName($request);
             $controller->$actionName();
         } else {
-            $controller = new Controller\Error($request, $response);
+            $controller = new Controller\Error($request);
             $controller->action_error404();
         }
         return $controller;

@@ -1,24 +1,24 @@
 <?php
 namespace FlickrSearch\Controller;
 
-use \FlickrSearch\Http;
+use FlickrSearch\Http;
+use FlickrSearch\View;
 
 abstract class App
 {
     protected $request;
     protected $response;
-    protected $template = 'index';
+    protected $view;
 
     /**
      * Constructor of class
      *
      * @param Http\Request $request
-     * @param Http\Response $response
      */
-    public function __construct(Http\Request $request, Http\Response $response)
+    public function __construct(Http\Request $request)
     {
         $this->request = $request;
-        $this->response = $response;
+        $this->response = new Http\Response();
     }
 
     /**
@@ -38,20 +38,23 @@ abstract class App
     }
 
     /**
+     * Display page
+     *
+     * @param View|null $view
      * @return string
      */
-    public function get_template()
+    public function show(View $view = null)
     {
-        return $this->template;
-    }
+        if (!headers_sent()) {
+            foreach ($this->get_response()->headers as $header) {
+                header($header);
+            }
+        }
 
-    /**
-     * Display pages
-     *
-     * @param array $vars
-     */
-    public function show($vars = array())
-    {
-        echo $this->response->apply_template($this->template, $vars, true);
+        $render_result = '';
+        if (defined('VIEW_INITIALIZED') && $view) {
+            $render_result = $view->apply_template(true);
+        }
+        return $render_result;
     }
 }

@@ -1,6 +1,8 @@
 <?php
 namespace FlickrSearch\Controller;
 
+use FlickrSearch\View;
+
 class Index extends App
 {
     /**
@@ -8,7 +10,6 @@ class Index extends App
      */
     public function action_index()
     {
-        $data = array();
-        $this->show($data);
+        echo $this->show(new View('index'));
     }
 }

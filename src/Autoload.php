@@ -5,7 +5,6 @@ function autoload($class_name)
 {
     $class_name = ltrim($class_name, '\\');
     $file_name  = '';
-    $namespace = '';
     if ($last_ns_pos = strripos($class_name, '\\')) {
         $namespace = substr($class_name, 0, $last_ns_pos);
         $class_name = substr($class_name, $last_ns_pos + 1);

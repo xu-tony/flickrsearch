@@ -1,9 +1,10 @@
 <?php
 namespace FlickrSearch\Controller;
 
-use \FlickrSearch\Http;
-use \FlickrSearch\Model;
-use \FlickrSearch\Library;
+use FlickrSearch\Http;
+use FlickrSearch\Model;
+use FlickrSearch\Library;
+use FlickrSearch\View;
 
 class Flickr extends App{
 
@@ -11,12 +12,11 @@ class Flickr extends App{
 
     /**
      * @param Http\Request $request
-     * @param Http\Response $response
      *
      * this is the flickr controller control the data retrieving and view display
      */
-    public function __construct(Http\Request $request, Http\Response $response) {
-        parent::__construct( $request,  $response);
+    public function __construct(Http\Request $request) {
+        parent::__construct($request);
         $this->model_flickrapi = new Model\FlickrAPI();
     }
 
@@ -24,7 +24,6 @@ class Flickr extends App{
      * control the image search and display
      */
     public function action_search() {
-        $this->template = "index";
         $data = array();
 
         if (isset($this->request->params['text']) && trim($this->request->params['text'])) {
@@ -47,6 +46,8 @@ class Flickr extends App{
             $data['images'] = $images;
             $data['pagination'] = $pagination;
         }
-        $this->show($data);
+        $view = new View('index');
+        $view->set_data($data);
+        echo $this->show($view);
     }
 }

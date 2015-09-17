@@ -23,8 +23,7 @@ class AppTest extends \PHPUnit_Framework_TestCase
         $_SERVER['REQUEST_URI'] = '/testclass/testaction';
         $_SERVER['QUERY_STRING'] = 'name=test123';
         $request = new Http\Request();
-        $respsonse = new Http\Response();
-        $controller = $app->run($request, $respsonse);
+        $controller = $app->run($request);
         $this->assertEquals($controller->get_request(), $request);
         $this->assertEquals($request->controller, 'FlickrSearch\Controller\Testclass');
         $this->assertEquals($request->action, 'action_testaction');
