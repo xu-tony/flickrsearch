@@ -1,5 +1,5 @@
 <?php
-namespace MyApp\Controller;
+namespace FlickrSearch\Controller;
 
 class Error extends App
 {

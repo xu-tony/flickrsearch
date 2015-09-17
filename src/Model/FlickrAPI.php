@@ -1,9 +1,9 @@
 <?php
-namespace MyApp\Model;
+namespace FlickrSearch\Model;
 
-use MyApp\Config;
-use MyApp\Library;
-use MyApp\Wrapper;
+use FlickrSearch\Config;
+use FlickrSearch\Library;
+use FlickrSearch\Wrapper;
 
 class FlickrAPI {
 

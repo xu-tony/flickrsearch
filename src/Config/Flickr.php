@@ -1,5 +1,5 @@
 <?php
-namespace MyApp\Config;
+namespace FlickrSearch\Config;
 
 class Flickr {
 

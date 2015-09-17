@@ -1,7 +1,7 @@
 <?php
-namespace MyApp\Library;
+namespace FlickrSearch\Library;
 
-use MyApp\Wrapper;
+use FlickrSearch\Wrapper;
 
 class Pagination
 {

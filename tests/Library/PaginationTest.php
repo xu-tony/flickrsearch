@@ -1,7 +1,7 @@
 <?php
-//namespace MyApp\Tests\Library;
+//namespace FlickrSearch\Tests\Library;
 //
-//use MyApp\Library;
+//use FlickrSearch\Library;
 //
 //class PaginationTest extends \PHPUnit_Framework_TestCase
 //{

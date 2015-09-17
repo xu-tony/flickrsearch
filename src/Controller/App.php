@@ -1,7 +1,7 @@
 <?php
-namespace MyApp\Controller;
+namespace FlickrSearch\Controller;
 
-use \MyApp\Http;
+use \FlickrSearch\Http;
 
 abstract class App
 {

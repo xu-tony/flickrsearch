@@ -1,9 +1,9 @@
 <?php
-namespace MyApp\Controller;
+namespace FlickrSearch\Controller;
 
-use \MyApp\Http;
-use \MyApp\Model;
-use \MyApp\Library;
+use \FlickrSearch\Http;
+use \FlickrSearch\Model;
+use \FlickrSearch\Library;
 
 class Flickr extends App{
 

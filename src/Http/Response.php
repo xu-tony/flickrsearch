@@ -1,5 +1,5 @@
 <?php
-namespace MyApp\Http;
+namespace FlickrSearch\Http;
 
 class Response
 {

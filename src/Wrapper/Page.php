@@ -1,5 +1,5 @@
 <?php
-namespace MyApp\Wrapper;
+namespace FlickrSearch\Wrapper;
 
 class Page{
     private $num;

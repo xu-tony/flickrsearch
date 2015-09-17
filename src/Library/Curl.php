@@ -1,5 +1,5 @@
 <?php
-namespace MyApp\Library;
+namespace FlickrSearch\Library;
 
 class Curl {
     protected $curl_obj;
