@@ -5,7 +5,7 @@ use FlickrSearch\Library;
 
 class PaginationTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var pagination */
+    /** @var Library\Pagination $pagination */
     protected $pagination;
 
     public function setUp()
@@ -39,14 +39,14 @@ class PaginationTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider getTestData
      */
-    public function testGetPages($numPages, $currentPage, $expected)
+    public function test_get_pages($numPages, $currentPage, $expected)
     {
         $pagination = new Library\Pagination($numPages, 1, $currentPage);
         $pages = $pagination->get_pages();
         $pageNums = array_map(function($page) { return $page->get_num(); }, $pages);
         $this->assertEquals($expected, $pageNums);
     }
-    public function getTestData()
+    public function get_test_data()
     {
         return array(
             // num pages, current page, max pages to show, expected pagination
