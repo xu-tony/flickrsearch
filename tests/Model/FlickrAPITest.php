@@ -31,7 +31,6 @@ class CurlTest extends \PHPUnit_Framework_TestCase
             ->willReturn($this->get_test_data_json());
 
         list($images, $total_images_num) = $flickrapi->search_image($text, $numPerPage, $pageSeq);
-
         $test_json = json_decode($this->get_test_data_json(), true);
         $expected_images = array();
         $expected_total_images_number = $test_json['photos']['total'];
