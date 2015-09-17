@@ -9,6 +9,7 @@ abstract class App
     protected $request;
     protected $response;
     protected $view;
+    public $default_template = 'index';
 
     /**
      * Constructor of class
@@ -47,6 +48,9 @@ abstract class App
     {
         $body = '';
         if (defined('VIEW_INITIALIZED') && $view) {
+            if ($view->get_template() === '') {
+                $view->set_template($this->default_template);
+            }
             $body = $view->apply_template(true);
             $this->get_response()->set_body($body);
         }
