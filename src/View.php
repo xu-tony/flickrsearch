@@ -3,7 +3,7 @@ namespace FlickrSearch;
 
 class View
 {
-    public static $view_dir;
+    protected static $view_dir;
     protected $template;
     protected $data = array();
 
@@ -39,6 +39,14 @@ class View
     public function set_var($name, $value)
     {
         $this->data[strval($name)] = $value;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function get_view_dir()
+    {
+        return self::$view_dir;
     }
 
     /**

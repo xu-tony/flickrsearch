@@ -6,14 +6,14 @@ use FlickrSearch\Http;
 
 class AppTest extends \PHPUnit_Framework_TestCase
 {
-    public function testInstance()
+    public function test_instance()
     {
         $app1 = FlickrSearch\App::Instance();
         $app2 = FlickrSearch\App::Instance();
         $this->assertEquals($app1 === $app2, True);
     }
 
-    public function testRun()
+    public function test_run()
     {
         $app = FlickrSearch\App::Instance();
 
