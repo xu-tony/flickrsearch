@@ -5,7 +5,8 @@ use FlickrSearch\Config;
 use FlickrSearch\Library;
 use FlickrSearch\Wrapper;
 
-class FlickrAPI {
+class FlickrAPI extends AppModel
+{
 
     protected $images;
     protected $images_total_num = null;

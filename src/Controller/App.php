@@ -45,10 +45,8 @@ abstract class App
      */
     public function show(View $view = null)
     {
-        if (!headers_sent()) {
-            foreach ($this->get_response()->headers as $header) {
-                header($header);
-            }
+        if (!$this->get_response()->is_header_sent()) {
+            $this->get_response()->send_headers();
         }
 
         $render_result = '';
