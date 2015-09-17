@@ -54,6 +54,6 @@ class Flickr extends App{
             $data['pagination_view'] =  $this->show($pagination_view);
         }
         $view->set_data($data);
-        echo $this->show($view);
+        return $this->show($view);
     }
 }

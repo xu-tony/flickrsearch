@@ -38,21 +38,18 @@ abstract class App
     }
 
     /**
-     * Display page
+     * Build response body by combining data with templates
      *
      * @param View|null $view
      * @return string
      */
     public function show(View $view = null)
     {
-        if (!$this->get_response()->is_header_sent()) {
-            $this->get_response()->send_headers();
-        }
-
-        $render_result = '';
+        $body = '';
         if (defined('VIEW_INITIALIZED') && $view) {
-            $render_result = $view->apply_template(true);
+            $body = $view->apply_template(true);
+            $this->get_response()->set_body($body);
         }
-        return $render_result;
+        return $body;
     }
 }

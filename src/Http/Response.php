@@ -4,6 +4,7 @@ namespace FlickrSearch\Http;
 class Response
 {
     private $headers = array('HTTP/1.1 200 OK');
+    private $body = '';
 
     /**
      * @param $value
@@ -35,13 +36,35 @@ class Response
     }
 
     /**
-     *
+     * Send out all headers
      */
     public function send_headers()
     {
         foreach ($this->get_header() as $header) {
             header($header);
         }
+    }
 
+    /**
+     * @param $value
+     */
+    public function set_body($value) {
+        $this->body = strval($value);
+    }
+
+    /**
+     * @return string
+     */
+    public function get_body()
+    {
+        return $this->body;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->body;
     }
 }
