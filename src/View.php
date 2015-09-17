@@ -26,7 +26,7 @@ class View
     {
         self::$view_dir = $view_dir . DIRECTORY_SEPARATOR;
         if (!defined('VIEW_INITIALIZED')) {
-            define('VIEW_INITIALIZED' , true);
+            define('VIEW_INITIALIZED', true);
         }
     }
 

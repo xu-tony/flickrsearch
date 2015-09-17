@@ -1,18 +1,21 @@
 <?php
 namespace FlickrSearch\Library;
 
-class Curl {
+class Curl
+{
     protected $curl_obj;
 
     /**
      * general curl initialize, which can extend more curl functions
      */
-    function __construct() {
+    function __construct()
+    {
         // initialise cURL object/options
         $this->curl_obj = curl_init();
     }
 
-    function __destruct() {
+    function __destruct()
+    {
         // free cURL resources/session
         curl_close($this->curl_obj);
     }
@@ -22,7 +25,8 @@ class Curl {
      * @return mixed|string
      * basic curl get action, adding the required curl params
      */
-    public function get($request_url) {
+    public function get($request_url)
+    {
         // The below sets the HTTP operation type
 
         curl_setopt($this->curl_obj, CURLOPT_HTTPGET, 1);
@@ -34,7 +38,7 @@ class Curl {
         curl_setopt($this->curl_obj, CURLOPT_RETURNTRANSFER, TRUE);
 
         // set time out
-        curl_setopt($this->curl_obj, CURLOPT_CONNECTTIMEOUT , 10);
+        curl_setopt($this->curl_obj, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($this->curl_obj, CURLOPT_TIMEOUT, 10); //timeout in seconds
 
         // send the transaction
@@ -42,7 +46,7 @@ class Curl {
 
 
         // assigns the cURL error to response if something went wrong so the caller can echo the error
-        if (curl_error($this->curl_obj)){
+        if (curl_error($this->curl_obj)) {
             $response = "cURL Error: " . curl_errno($this->curl_obj) . " - " . curl_error($this->curl_obj);
         }
 

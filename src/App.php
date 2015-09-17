@@ -23,7 +23,9 @@ final class App
     /**
      * Disallow create a new instance
      */
-    private function __construct(){}
+    private function __construct()
+    {
+    }
 
     /**
      * Start the routing
@@ -31,7 +33,8 @@ final class App
      * @param Http\Request $request
      * @return Controller\App
      */
-    public function run(Http\Request $request) {
+    public function run(Http\Request $request)
+    {
         if (method_exists($request->controller, $request->action)) {
             $controllerName = $request->controller;
             $actionName = $request->action;

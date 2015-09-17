@@ -1,9 +1,8 @@
-body
-{
+body {
     text-align: center;
 }
-#searchbox
-{
+
+#searchbox {
     background: #eaf8fc;
     border-width: 1px;
     border-style: solid;
@@ -14,12 +13,12 @@ body
     margin: 100px auto 50px;
     overflow: hidden;
 }
-#search, #submit
-{
+
+#search, #submit {
     float: left;
 }
-#search
-{
+
+#search {
     padding: 5px 9px;
     height: 23px;
     width: 380px;
@@ -27,9 +26,9 @@ body
     font: normal 13px arial, helvetica;
     background: #f1f1f1;
 }
+
 /* ----------------------- */
-#submit
-{
+#submit {
     background: #6cbb6b;
     border-width: 1px;
     border-style: solid;
@@ -42,31 +41,31 @@ body
     font: bold 14px Arial, Helvetica;
     color: #23441e;
 }
-#submit:hover
-{
+
+#submit:hover {
     background: #95d788;
 }
-#submit:active
-{
+
+#submit:active {
     background: #95d788;
     outline: none;
 }
+
 #search.placeholder {
     color: #9c9c9c !important;
     font-style: italic;
 }
-#search:focus
-{
+
+#search:focus {
     border-color: #8badb4;
     background: #fff;
     outline: none;
 }
 
-
 #pagination {
     padding: 3px;
     margin: 3px;
-    text-align:center;
+    text-align: center;
 }
 
 #pagination a {
@@ -75,17 +74,20 @@ body
     text-decoration: none;
     color: #000099;
 }
-#pagination a:hover, div.digg a:active, #pagination span.current a{
+
+#pagination a:hover, div.digg a:active, #pagination span.current a {
     border: 1px solid #000099;
     color: #000;
     background-color: #AAAADD;
 }
+
 #pagination span.current {
     padding: 2px 5px 2px 5px;
     margin: 2px;
     font-weight: bold;
     color: #FFF;
 }
+
 #pagination span.disabled {
     padding: 2px 5px 2px 5px;
     margin: 2px;

@@ -1,7 +1,8 @@
 <?php
 namespace FlickrSearch\Wrapper;
 
-class Flickrimage{
+class Flickrimage
+{
     private $id;
     private $owner;
     private $secret;
@@ -12,7 +13,8 @@ class Flickrimage{
     private $isfriend;
     private $isfamily;
 
-    public function __construct($id, $owner, $secret, $server, $farm, $title, $ispublic, $isfriend, $isfamily) {
+    public function __construct($id, $owner, $secret, $server, $farm, $title, $ispublic, $isfriend, $isfamily)
+    {
         $this->id = $id;
         $this->owner = $owner;
         $this->secret = $secret;
@@ -97,27 +99,29 @@ class Flickrimage{
     }
 
 
-
-    public static function from_array(array $raw_array) {
+    public static function from_array(array $raw_array)
+    {
         return new Flickrimage(
-            array_key_exists("id", $raw_array)?$raw_array['id'] : null,
-            array_key_exists("owner", $raw_array)?$raw_array['owner']: null,
-            array_key_exists("secret", $raw_array)?$raw_array['secret']: null,
-            array_key_exists("server", $raw_array)?$raw_array['server']: null,
-            array_key_exists("farm", $raw_array)?$raw_array['farm']: null,
-            array_key_exists("title", $raw_array)?$raw_array['title']: null,
-            array_key_exists("ispublic", $raw_array)?$raw_array['ispublic']: null,
-            array_key_exists("isfriend", $raw_array)?$raw_array['isfriend']: null,
-            array_key_exists("isfamily", $raw_array)?$raw_array['isfamily']: null
+            array_key_exists("id", $raw_array) ? $raw_array['id'] : null,
+            array_key_exists("owner", $raw_array) ? $raw_array['owner'] : null,
+            array_key_exists("secret", $raw_array) ? $raw_array['secret'] : null,
+            array_key_exists("server", $raw_array) ? $raw_array['server'] : null,
+            array_key_exists("farm", $raw_array) ? $raw_array['farm'] : null,
+            array_key_exists("title", $raw_array) ? $raw_array['title'] : null,
+            array_key_exists("ispublic", $raw_array) ? $raw_array['ispublic'] : null,
+            array_key_exists("isfriend", $raw_array) ? $raw_array['isfriend'] : null,
+            array_key_exists("isfamily", $raw_array) ? $raw_array['isfamily'] : null
         );
     }
 
-    public function get_thumbnail_url() {
+    public function get_thumbnail_url()
+    {
         return "https://farm{$this->farm}.staticflickr.com/{$this->server}/{$this->id}_{$this->secret}_t.jpg";
 
     }
 
-    public function get_image_url() {
+    public function get_image_url()
+    {
         return "https://farm{$this->farm}.staticflickr.com/{$this->server}/{$this->id}_{$this->secret}.jpg";
     }
 

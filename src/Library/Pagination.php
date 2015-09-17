@@ -32,7 +32,7 @@ class Pagination
 
     protected function update_num_pages()
     {
-        $this->num_pages = ($this->items_per_page == 0 ? 0 : (int) ceil($this->total_items/$this->items_per_page));
+        $this->num_pages = ($this->items_per_page == 0 ? 0 : (int)ceil($this->total_items / $this->items_per_page));
     }
 
     /**
@@ -122,7 +122,7 @@ class Pagination
         } else {
 
             // Determine the sliding range, centered around the current page.
-            $num_adjacents = (int) floor(($this->max_pages_to_show - 3) / 2);
+            $num_adjacents = (int)floor(($this->max_pages_to_show - 3) / 2);
 
             if ($this->current_page + $num_adjacents > $this->num_pages) {
                 $sliding_start = $this->num_pages - $this->max_pages_to_show + 2;
@@ -162,7 +162,7 @@ class Pagination
      */
     protected function create_page($page_num, $is_current = false)
     {
-        return new Wrapper\Page($page_num,$this->get_page_url($page_num),$is_current);
+        return new Wrapper\Page($page_num, $this->get_page_url($page_num), $is_current);
     }
 
     /**
@@ -170,6 +170,6 @@ class Pagination
      */
     protected function create_page_ellipsis()
     {
-        return new Wrapper\Page('...',null,false);
+        return new Wrapper\Page('...', null, false);
     }
 }

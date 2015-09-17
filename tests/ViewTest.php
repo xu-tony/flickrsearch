@@ -22,7 +22,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
         $view->set_var('test2', 'test22');
         $result = $view->apply_template();
         $this->assertEquals($view->get_template(), 'test');
-        $this->assertEquals($view->get_data(), array('test'=>'test1', 'test2'=>'test22'));
+        $this->assertEquals($view->get_data(), array('test' => 'test1', 'test2' => 'test22'));
         $this->assertEquals($result, 'test1');
         $view->set_template('test2');
         $this->assertEquals($view->get_template(), 'test2');

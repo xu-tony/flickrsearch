@@ -22,6 +22,7 @@ class PaginationTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals(6, $this->pagination->get_next_page());
     }
+
     public function test_get_prev_page()
     {
         $this->assertEquals(4, $this->pagination->get_prev_page());
@@ -36,6 +37,7 @@ class PaginationTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals('?text=bmw&page=4', $this->pagination->get_prev_url());
     }
+
     /**
      * @dataProvider get_test_data
      */
@@ -43,9 +45,12 @@ class PaginationTest extends \PHPUnit_Framework_TestCase
     {
         $pagination = new Library\Pagination($numPages, 1, $currentPage);
         $pages = $pagination->get_pages();
-        $pageNums = array_map(function($page) { return $page->get_num(); }, $pages);
+        $pageNums = array_map(function ($page) {
+            return $page->get_num();
+        }, $pages);
         $this->assertEquals($expected, $pageNums);
     }
+
     public function get_test_data()
     {
         return array(
