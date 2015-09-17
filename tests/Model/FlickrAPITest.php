@@ -30,7 +30,7 @@ class CurlTest extends \PHPUnit_Framework_TestCase
             ->method('send_request')
             ->willReturn($this->get_test_data_json());
 
-        $images = $flickrapi->search_image($text, $numPerPage, $pageSeq);
+        list($images, $total_images_num) = $flickrapi->search_image($text, $numPerPage, $pageSeq);
 
         $test_json = json_decode($this->get_test_data_json(), true);
         $expected_images = array();
@@ -48,7 +48,7 @@ class CurlTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals($expected_images, $images);
-        $this->assertEquals($expected_total_images_number, count($images));
+        $this->assertEquals($expected_total_images_number, $total_images_num);
     }
 
 }
