@@ -14,7 +14,7 @@ class CurlTest extends \PHPUnit_Framework_TestCase
     {
 
         $this->flickrapi = new Model\FlickrAPI();
-        $this->getMockBuilder('$this->library_curl')
+        $this->getMockBuilder('Library\Curl')
             ->getMock();
     }
 
@@ -26,15 +26,21 @@ class CurlTest extends \PHPUnit_Framework_TestCase
 
         $this->flickrapi->search_image($text, $numPerPage, $pageSeq);
 
-        $expected_images = array(
-            new Wrapper\Flickrimage("21429256362", "27889738@N07", "711f03378e", "5647", 6, "Panel for Patriot PAC-3 Guided Missile Round Trainer at JASDF Yokota Festival 2014", 1, 0, 0),
-            new Wrapper\Flickrimage("21194609688", "27889738@N07", "2afdd89062", "657", 1, "JASDF Yokota Festival in Yokota Friendship Festival 2014", 1, 0, 0),
-            new Wrapper\Flickrimage("20844454434", "27889738@N07", "ff41cef669", "741", 1, "Fighter Aircfrafts in Yokota Friendship Festival 2014", 1, 0, 0),
-            new Wrapper\Flickrimage("21225757978", "27889738@N07", "55f66e3d98", "5685", 6, "Patriot PAC-3 Guided Missile Round Trainer Displayed at JASDF Yokota Festival 2014", 1, 0, 0),
-            new Wrapper\Flickrimage("21071084118", "50484221@N07", "f67c269f27", "5833", 6, "Novembers Doom (Acoustic set), 05\\/09\\/2015", 1, 0, 0)
+        $result_json = $this->get_test_data_json();
+        $expected_images = array();
+        $expected_total_images_number = $result_json['photos']['total'];
+        foreach ($result_json['photos']['photo'] as $photo) {
+            $expected_images[] = Wrapper\Flickrimage::from_array($photo);
+        }
 
-        );
-        $expected_total_images_number = 11361;
+//        $expected_images = array(
+//            new Wrapper\Flickrimage("21429256362", "27889738@N07", "711f03378e", "5647", 6, "Panel for Patriot PAC-3 Guided Missile Round Trainer at JASDF Yokota Festival 2014", 1, 0, 0),
+//            new Wrapper\Flickrimage("21194609688", "27889738@N07", "2afdd89062", "657", 1, "JASDF Yokota Festival in Yokota Friendship Festival 2014", 1, 0, 0),
+//            new Wrapper\Flickrimage("20844454434", "27889738@N07", "ff41cef669", "741", 1, "Fighter Aircfrafts in Yokota Friendship Festival 2014", 1, 0, 0),
+//            new Wrapper\Flickrimage("21225757978", "27889738@N07", "55f66e3d98", "5685", 6, "Patriot PAC-3 Guided Missile Round Trainer Displayed at JASDF Yokota Festival 2014", 1, 0, 0),
+//            new Wrapper\Flickrimage("21071084118", "50484221@N07", "f67c269f27", "5833", 6, "Novembers Doom (Acoustic set), 05\\/09\\/2015", 1, 0, 0)
+//        );
+//        $expected_total_images_number = 11361;
 
         $this->assertEquals($expected_images, $this->flickrapi->get_images());
         $this->assertEquals($expected_total_images_number, $this->flickrapi->get_images_total_num());
