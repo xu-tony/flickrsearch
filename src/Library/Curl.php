@@ -1,13 +1,7 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: tony
- * Date: 9/14/15
- * Time: 5:18 PM
- */
+namespace MyApp\Library;
 
-
-class Library_Curl {
+class Curl {
     protected $curl_obj;
 
     /**

@@ -1,5 +1,5 @@
 <?php
 error_reporting(-1);
-require realpath('..' . DIRECTORY_SEPARATOR . 'Autoload.php');
+require realpath('..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Autoload.php');
 
-App::Instance()->run(new Request(), new Response());
+MyApp\App::Instance()->run(new MyApp\Http\Request(), new MyApp\Http\Response());

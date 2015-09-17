@@ -1,24 +1,23 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: tony
- * Date: 9/14/15
- * Time: 6:43 PM
- */
+namespace MyApp\Controller;
 
-class Controller_Flickr extends Controller_App{
+use \MyApp\Http;
+use \MyApp\Model;
+use \MyApp\Library;
+
+class Flickr extends App{
 
     const IMAGES_PER_PAGE = 5;
 
     /**
-     * @param Request $request
-     * @param Response $response
+     * @param Http\Request $request
+     * @param Http\Response $response
      *
      * this is the flickr controller control the data retrieving and view display
      */
-    public function __construct(Request $request, Response $response) {
+    public function __construct(Http\Request $request, Http\Response $response) {
         parent::__construct( $request,  $response);
-        $this->model_flickrapi = new Model_FlickrAPI();
+        $this->model_flickrapi = new Model\FlickrAPI();
     }
 
     /**
@@ -43,7 +42,7 @@ class Controller_Flickr extends Controller_App{
             $images = $this->model_flickrapi->get_images();
 
             $urlPattern = "?text=".urlencode($this->request->params['text'])."&page=(:num)";
-            $pagination = new Library_Pagination($total_num, self::IMAGES_PER_PAGE, $current_page, $urlPattern);
+            $pagination = new Library\Pagination($total_num, self::IMAGES_PER_PAGE, $current_page, $urlPattern);
 
             $data['images'] = $images;
             $data['pagination'] = $pagination;

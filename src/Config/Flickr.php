@@ -1,11 +1,7 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: tony
- * Date: 9/14/15
- * Time: 5:04 PM
- */
-class Config_Flickr {
+namespace MyApp\Config;
+
+class Flickr {
 
     private $base_url;
     private $flickr_search_method;

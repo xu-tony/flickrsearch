@@ -1,4 +1,8 @@
 <?php
+namespace MyApp;
+
+use \MyApp\Http;
+use \MyApp\Controller;
 
 final class App
 {
@@ -24,19 +28,18 @@ final class App
     /**
      * Start the routing
      *
-     * @param Request $request
-     * @param Response $response
-     * @return Controller_App
+     * @param Http\Request $request
+     * @param Http\Response $response
+     * @return Controller\App
      */
-    public function run(Request $request, Response $response) {
-
+    public function run(Http\Request $request, Http\Response $response) {
         if (method_exists($request->controller, $request->action)) {
             $controllerName = $request->controller;
             $actionName = $request->action;
             $controller = new $controllerName($request, $response);
             $controller->$actionName();
         } else {
-            $controller = new Controller_Error($request, $response);
+            $controller = new Controller\Error($request, $response);
             $controller->action_error404();
         }
         return $controller;

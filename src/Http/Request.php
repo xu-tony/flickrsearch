@@ -1,4 +1,5 @@
 <?php
+namespace MyApp\Http;
 
 class Request
 {
@@ -8,8 +9,8 @@ class Request
     public $server_name;
     public $request_uri;
     public $params = array();
-    public $controller = 'index';
-    public $action = 'index';
+    public $controller = 'MyApp\Controller\Index';
+    public $action = 'action_index';
 
     /**
      * Constructor of Request
@@ -38,7 +39,7 @@ class Request
      */
     public function route($request_uri)
     {
-        $controller_name = 'Controller_Index';
+        $controller_name = 'MyApp\Controller\Index';
         $action_name = 'action_index';
         $request_uri = strtolower($request_uri);
         if (!empty($request_uri) && $request_uri !== '/') {
@@ -47,7 +48,7 @@ class Request
             $url_parts = explode('/', $request_uri);
             switch (count($url_parts)) {
                 case 2:
-                    $controller_name = 'Controller_' . ucfirst($url_parts[0]);
+                    $controller_name = 'MyApp\Controller\\' . ucfirst($url_parts[0]);
                     $action_name = 'action_' . lcfirst($url_parts[1]);
                     break;
 

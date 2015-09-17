@@ -1,6 +1,9 @@
 <?php
+namespace MyApp\Controller;
 
-abstract class Controller_App
+use \MyApp\Http;
+
+abstract class App
 {
     protected $request;
     protected $response;
@@ -9,17 +12,17 @@ abstract class Controller_App
     /**
      * Constructor of class
      *
-     * @param Request $request
-     * @param Response $response
+     * @param Http\Request $request
+     * @param Http\Response $response
      */
-    public function __construct(Request $request, Response $response)
+    public function __construct(Http\Request $request, Http\Response $response)
     {
         $this->request = $request;
         $this->response = $response;
     }
 
     /**
-     * @return Request
+     * @return Http\Request
      */
     public function get_request()
     {
@@ -27,7 +30,7 @@ abstract class Controller_App
     }
 
     /**
-     * @return Response
+     * @return Http\Response
      */
     public function get_response()
     {
